@@ -30,7 +30,7 @@ logger.setLevel(logging.DEBUG)
 os.environ["RANDOM_SEED"] = '0'  # for reproducibility
 
 # import benchmarks from settings
-from settings import cstr
+from ccs2023.nonlinear.settings import cstr
 
 # simulation settings
 baselines = ['none', 'oprp_ol', 'oprp_cl', 'lqr', 'vsr']
@@ -386,12 +386,7 @@ for exp in exps:
         plt.vlines(exp.recovery_index * exp.dt, exp.y_lim[0], exp.y_lim[1], colors='green', linestyle='dotted',
                    linewidth=2)
 
-        # recovery_complete_index = exp.recovery_index + deadline_for_all_methods
-        # # print(recovery_complete_index)
-        # plt.vlines((recovery_complete_index) * exp.dt, exp.y_lim[0], exp.y_lim[1], colors='blue', linestyle='dotted',
-        #            linewidth=2)
-        # plt.vlines((recovery_complete_index + maintain_time) * exp.dt, exp.y_lim[0], exp.y_lim[1], colors='black',
-        #            linestyle='dotted', linewidth=2)
+        
 
     # strip
     cnt = len(t_arr)
@@ -403,23 +398,17 @@ for exp in exps:
         end_time = exp_rst[bl]['time']['recovery_complete']
         t_arr_tmp = t_arr[exp.recovery_index:end_time + 1]
         output = [x[exp.output_index] for x in exp_rst[bl]['outputs'][exp.recovery_index:end_time + 1]]
-        # output = [x[exp.output_index] for x in exp_rst[bl]['states'][exp.recovery_index:end_time + 1]]
         plt.plot(t_arr_tmp, output, color=colors[bl], label=bl)
 
     if exp.y_lim:
         plt.ylim(exp.y_lim)
     if exp.x_lim:
         plt.xlim(exp.x_lim)
-    #     # updated_x_lim = (exp.x_lim[0], exp.dt * (recovery_complete_index + maintain_time))
-    #     updated_x_lim = (exp.x_lim[0], exp.dt * (exp.max_index-1))
-    #     plt.xlim(updated_x_lim)
-
-    # plt.legend()
+    
     plt.ylabel(exp.y_label)
     plt.xlabel('Time [sec]', loc='right', labelpad=-55)
     plt.legend()
 
-    plt.savefig(f'../fig/nonlinear/{exp.name}_all.png', format='png', bbox_inches='tight')
     plt.show()
 
 

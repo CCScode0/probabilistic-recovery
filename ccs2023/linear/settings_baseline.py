@@ -24,7 +24,7 @@ class motor_speed_bias:
     noise = {
         'process': {
             'type': 'white',
-            'param': {'C': np.array([[0.03, 0], [0, 0.04]])}
+            'param': {'C': np.array([[0.01, 0], [0, 0.01]])}
         }
     }
     model = MotorSpeed('bias', dt, max_index, noise)
@@ -39,7 +39,7 @@ class motor_speed_bias:
     # needed by 1_recovery_given_p
     s = Strip(np.array([-1, 0]), a=-4.2, b=-3.8)
     P_given = 0.95
-    max_recovery_step = 40
+    max_recovery_step = 140
     # plot
     ref_index = 0
     output_index = 0
@@ -88,7 +88,7 @@ class quadruple_tank_bias:
     # needed by 1_recovery_given_p
     s = Strip(np.array([-1, 0, 0, 0]), a=-14.3, b=-13.7)
     P_given = 0.95
-    max_recovery_step = 40
+    max_recovery_step = 140
     # plot
     ref_index = 0
     output_index = 0
@@ -137,7 +137,7 @@ class f16_bias:
     # needed by 1_recovery_given_p
     s = Strip(np.array([0, 0, 1, 0]), a=4.2/57.3, b=5.8/57.3)
     P_given = 0.95
-    max_recovery_step = 40
+    max_recovery_step = 140
     # plot
     ref_index = 0
     output_index = 0
@@ -189,7 +189,7 @@ class aircraft_pitch_bias:
     # needed by 1_recovery_given_p
     s = Strip(np.array([0, 0, -1]), a=-0.395, b=-0.005)
     P_given = 0.95
-    max_recovery_step = 40
+    max_recovery_step = 140
     # plot
     ref_index = 0
     output_index = 0
@@ -238,7 +238,7 @@ class boeing747_bias:
     # needed by 1_recovery_given_p
     s = Strip(np.array([-1, 0, 0, 0, 0]), a=-1.4, b=-0.6)
     P_given = 0.95
-    max_recovery_step = 40
+    max_recovery_step = 140
     # plot
     ref_index = 0
     output_index = 0
@@ -295,7 +295,7 @@ class heat_bias:
     l[y_point] = -1
     s = Strip(l, a=-15.3, b=-14.7)
     P_given = 0.95
-    max_recovery_step = 60
+    max_recovery_step = 160
     # plot
     ref_index = 0
     output_index = 0
@@ -366,7 +366,7 @@ class platoon_bias:
     # needed by 1_recovery_given_p
     s = Strip(np.array([-1, 0, 0, 0, 0, 0, 0]), a=-2.3, b=-1.7)
     P_given = 0.95
-    max_recovery_step = 40
+    max_recovery_step = 140
     # plot
     ref_index = 0
     output_index = 0
@@ -416,7 +416,7 @@ class rlc_circuit_bias:
     # needed by 1_recovery_given_p
     s = Strip(np.array([-1, 0]), a=-3.2, b=-2.8)
     P_given = 0.95
-    max_recovery_step = 40
+    max_recovery_step = 140
     # plot
     ref_index = 0
     output_index = 0
@@ -465,7 +465,7 @@ class quadrotor_bias:
     # needed by 1_recovery_given_p
     s = Strip(np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1]), a=-4.5, b=-3.5)
     P_given = 0.95
-    max_recovery_step = 40
+    max_recovery_step = 140
     # plot
     ref_index = 0
     output_index = 5
@@ -520,7 +520,7 @@ class lane_keeping:
     # needed by 1_recovery_given_p
     s = Strip(np.array([1, 0, 0, 0]), a=-0.05, b=0.05)
     P_given = 0.95
-    max_recovery_step = 150
+    max_recovery_step = 1150
     # plot
     ref_index = 0
     output_index = 0
